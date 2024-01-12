@@ -1,20 +1,36 @@
-﻿int[] arrayOfNumbers = Console.ReadLine()
+﻿int[] masiv = Console.ReadLine()
     .Split(" ", StringSplitOptions.RemoveEmptyEntries)
-    .Select(int.Parse) 
+    .Select(int.Parse)
     .ToArray();
+int[] novMasiv = new int[masiv.Length];
 
-int rotations = int.Parse(Console.ReadLine());
-
-for (int i = 0; i < rotations; i++)
+for (int i = 0; i < novMasiv.Length; i++)
 {
-    int temp = arrayOfNumbers[0];
-
-    for (int j = 0; j < arrayOfNumbers.Length - 1; j++)
-    {
-        arrayOfNumbers[j] = arrayOfNumbers[j + 1];
-    }
-
-    arrayOfNumbers[arrayOfNumbers.Length - 1] = temp;
+    novMasiv[i] = masiv[i];
 }
 
-Console.WriteLine(String.Join(" ", arrayOfNumbers));
+masiv.Reverse();
+
+Console.WriteLine(String.Join(" ", masiv));
+
+foreach (int i in novMasiv)
+{
+    Console.Write($"{i * 2} ");
+}
+Console.WriteLine();
+
+int n = int.Parse(Console.ReadLine());
+
+int[] novNovMasiv = new int[n];
+
+novNovMasiv = Console.ReadLine()
+    .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+    .Select(int.Parse)
+    .ToArray();
+
+Console.WriteLine(String.Join(" ", novNovMasiv));
+
+for (int i = 0; i < novNovMasiv.Length; i++)
+{
+    Console.Write($"{Math.Pow(novNovMasiv[i], i)} ");
+}
